@@ -1,0 +1,26 @@
+name: repo-to-markdown
+on:
+  push:
+    branches: [ "**" ]
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    env:
+      MEM0_API_KEY: ${{ secrets.MEM0_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install mem0ai
+      - name: Create condensed markdown
+        env:
+          MEM0_API_KEY: ${{ secrets.MEM0_API_KEY }}
+          BRANCH_NAME: ${{ github.ref_name }}
+          REPO_NAME: ${{ github.repository }}
+        run: python scripts/repo2md.py > context/latest.md
+      - name: Commit snapshot
+        run: |
+          git config --global user.email "bot@local"
+          git config --global user.name  "snapshot-bot"
+          git add context/latest.md || true
+          git commit -m "refresh context [skip ci]" || true
+          git push || true

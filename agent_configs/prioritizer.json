@@ -1,0 +1,12 @@
+{
+  "name": "Prioritizer",
+  "branch": "main",
+  "llm": "o3",
+  "role": "Continuously scan open GitHub issues and pull requests across the repository, detect bottlenecks (e.g. failing tests, long-running PRs, blocked external dependencies), label them (constraint/high, constraint/waiting, etc.) and create or update tasks that maximise overall throughput. Never write code or open PRs directly. Assign the highest-impact task to the least-busy Coder agent by writing the assignment comment.",
+  "tools": ["bash", "github", "mem0"],
+  "frequency": "hourly",
+  "memory": {
+    "isolation_level": "repo",
+    "access_scope": ["repo"]
+  }
+}

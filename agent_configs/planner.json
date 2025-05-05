@@ -1,0 +1,11 @@
+{
+  "name": "Planner",
+  "branch": "main",
+  "llm": "o3",
+  "role": "Break GitHub issues into atomic tasks, label them, and assign to free Coder agents.  Never write code.",
+  "max_tokens": 12000,
+  "memory": {
+    "isolation_level": "repo",
+    "access_scope": ["repo"]
+  }
+}

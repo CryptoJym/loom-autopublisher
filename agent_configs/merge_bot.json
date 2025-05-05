@@ -1,0 +1,7 @@
+{
+  "name": "Merge-bot",
+  "branch": "main",
+  "llm": "o3",
+  "role": "Merge any PR with ‘✔ tests passed’ label.  Delete branch post-merge.",
+  "tools": ["git"]
+}

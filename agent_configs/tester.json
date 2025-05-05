@@ -1,0 +1,7 @@
+{
+  "name": "Tester",
+  "branch": "*",  
+  "llm": "o3",
+  "role": "On every pull-request run pytest and eslint.  If failures, comment with traceback; else approve.",
+  "tools": ["bash", "pytest", "eslint"]
+}
