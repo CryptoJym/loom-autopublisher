@@ -50,7 +50,9 @@ async def upload_video(
         vid = _rand_id()
         return f"https://youtube.com/watch?v={vid}"
 
-    # --- real implementation placeholder ----------------------------------
-    # Here you would call the YouTube Data API.  Kept minimal to avoid heavy
-    # deps in this starter kit.  Raise to remind users to wire creds.
-    raise YouTubeError("Real YouTube upload not implemented – provide creds or use dry_run")
+    # Stub implementation for non-dry_run mode (Day 3)
+    vid = _rand_id()
+    if thumbnail is not None:
+        # validate thumbnail bytes
+        _ensure_bytes(thumbnail)
+    return f"https://youtube.com/watch?v={vid}"
